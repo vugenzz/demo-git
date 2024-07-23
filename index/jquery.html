@@ -151,4 +151,28 @@
             // Lấy dữ liệu từ form
             var formData = {
                 'name'    : $('#name').val(),
-          
+                'email'   : $('#email').val(),
+                'message' : $('#message').val()
+            };
+            // Gửi dữ liệu bằng AJAX
+            $.ajax({
+                type        : 'POST',
+                url         : 'process.php', // Đường dẫn xử lý form
+                data        : formData,
+                dataType    : 'json',
+                encode      : true
+            })
+            .done(function(data) {
+                console.log(data); // Xử lý dữ liệu trả về
+                alert('Thông điệp của bạn đã được gửi đi!');
+            })
+            .fail(function(data) {
+                console.log(data); // Xử lý lỗi nếu có
+                alert('Có lỗi xảy ra khi gửi thông điệp.');
+            });
+        });
+    });
+</script>
+
+</body>
+</html>
